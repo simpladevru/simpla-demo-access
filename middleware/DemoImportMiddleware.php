@@ -8,6 +8,8 @@
 
 namespace Root\middleware;
 
+use Root\helpers\FileHelper;
+
 class DemoImportMiddleware
 {
     private $import_files_dir = '../files/import/';
@@ -15,34 +17,9 @@ class DemoImportMiddleware
 
     public function handle($request, $app, $next)
     {
-        if( !empty($request['demo']) )
-        {
-            $temp_file   = tempnam($this->import_files_dir, 'temp_');
-            $source_file = $this->import_files_dir.$this->import_file;
-
-            if(!$source = fopen($source_file, "r")) {
-                return false;
-            }
-
-            if(!$temp = fopen($temp_file, "w")) {
-                return false;
-            }
-
-            $i = 0;
-            $process = true;
-            while (($line = fgets($source, 4096)) !== false && $process)  {
-                fwrite($temp, $line);
-                $i++;
-                $process = $i > 11 ? false : true;
-            }
-
-            fclose($temp);
-            fclose($source);
-
-            unlink($source_file);
-            rename($temp_file, $source_file);
+        if( !empty($request['demo']) ) {
+            FileHelper::maxRows($this->import_files_dir, $this->import_file, 11);
         }
-
         return $next($app);
     }
 }

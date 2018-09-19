@@ -11,32 +11,32 @@ require_once('../../api/Simpla.php');
 class ImportAjax extends Simpla
 {	
 	// Соответствие полей в базе и имён колонок в файле
-	private $columns_names = array(
-			'name'=>             array('product', 'name', 'товар', 'название', 'наименование'),
-			'url'=>              array('url', 'адрес'),
-			'visible'=>          array('visible', 'published', 'видим'),
-			'featured'=>         array('featured', 'hit', 'хит', 'рекомендуемый'),
-			'category'=>         array('category', 'категория'),
-			'brand'=>            array('brand', 'бренд'),
-			'variant'=>          array('variant', 'вариант'),
-			'price'=>            array('price', 'цена'),
-			'compare_price'=>    array('compare price', 'старая цена'),
-			'sku'=>              array('sku', 'артикул'),
-			'stock'=>            array('stock', 'склад', 'на складе'),
-			'meta_title'=>       array('meta title', 'заголовок страницы'),
-			'meta_keywords'=>    array('meta keywords', 'ключевые слова'),
-			'meta_description'=> array('meta description', 'описание страницы'),
-			'annotation'=>       array('annotation', 'аннотация', 'краткое описание'),
-			'description'=>      array('description', 'описание'),
-			'images'=>           array('images', 'изображения')
-			);
+    private $columns_names = array(
+        'name'=>             array('product', 'name', 'товар', 'название', 'наименование'),
+        'url'=>              array('url', 'адрес'),
+        'visible'=>          array('visible', 'published', 'видим'),
+        'featured'=>         array('featured', 'hit', 'хит', 'рекомендуемый'),
+        'category'=>         array('category', 'категория'),
+        'brand'=>            array('brand', 'бренд'),
+        'variant'=>          array('variant', 'вариант'),
+        'price'=>            array('price', 'цена'),
+        'compare_price'=>    array('compare price', 'старая цена'),
+        'sku'=>              array('sku', 'артикул'),
+        'stock'=>            array('stock', 'склад', 'на складе'),
+        'meta_title'=>       array('meta title', 'заголовок страницы'),
+        'meta_keywords'=>    array('meta keywords', 'ключевые слова'),
+        'meta_description'=> array('meta description', 'описание страницы'),
+        'annotation'=>       array('annotation', 'аннотация', 'краткое описание'),
+        'description'=>      array('description', 'описание'),
+        'images'=>           array('images', 'изображения')
+    );
 	
 	// Соответствие имени колонки и поля в базе
 	private $internal_columns_names = array();
 
 	private $import_files_dir      = '../files/import/'; // Временная папка		
 	private $import_file           = 'import.csv';           // Временный файл
-	private $category_delimiter = ',';                       // Разделитель каегорий в файле
+	private $category_delimiter    = ',';                       // Разделитель каегорий в файле
 	private $subcategory_delimiter = '/';                    // Разделитель подкаегорий в файле
 	private $column_delimiter      = ';';
 	private $products_count        = 10;

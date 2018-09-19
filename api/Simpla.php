@@ -82,3 +82,14 @@ class Simpla
 		return self::$objects[$name];
 	}
 }
+
+if( !function_exists('pipeline') )
+{
+    /**
+     * @return \Mpociot\Pipeline\Pipeline
+     */
+    function pipeline()
+    {
+        return (new \Mpociot\Pipeline\Pipeline);
+    }
+}

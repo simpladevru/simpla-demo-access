@@ -380,7 +380,7 @@ class ImportAjax extends Simpla
 
 // Middleware
 
-$result = (new \Mpociot\Pipeline\Pipeline)->send([], new Simpla)->through([
+$result = pipeline()->send([], new Simpla)->through([
     CheckLicenseOrDemo::class,
     DemoImportMiddleware::class,
     function() { return (new ImportAjax)->import(); }

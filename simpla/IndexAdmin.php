@@ -60,10 +60,10 @@ class IndexAdmin extends Simpla
         // Вызываем конструктор базового класса
         parent::__construct();
 
-        $response = (new \Mpociot\Pipeline\Pipeline)->send([], $this)->through([
+        $response = pipeline()->send([], $this)->through([
             CheckLicenseOrDemo::class,
         ])->then(function($request) { return $request; });
-
+        
         $this->design->assign('license', $response['license']);
 
         $this->design->set_templates_dir('simpla/design/html');

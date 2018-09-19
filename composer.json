@@ -1,0 +1,17 @@
+{
+    "name": "davinci/simpla-demo-access",
+    "authors": [
+        {
+            "name": "davinci",
+            "email": "simpladev@yandex.ru"
+        }
+    ],
+    "require": {
+        "mpociot/pipeline": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Root\\": "."
+        }
+    }
+}
